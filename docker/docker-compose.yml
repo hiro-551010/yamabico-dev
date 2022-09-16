@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  yamabico:
+    # 1: 環境をビルドする際に利用する Dockerfile を指定
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # 2: Container にマウントしたいファイルを指定
+    volumes:
+        - ../app:/app
+      # (Optional) VSCode settings
+      # - ../.vscode:/workspace/.vscode:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    # 3: 環境変数の定義ファイルを指定
+    env_file:
+      - .env
